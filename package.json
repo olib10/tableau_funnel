@@ -1,0 +1,13 @@
+{
+  "name": "tableau_funnel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/olib10/tableau_funnel.git",
+  "author": "Oliver Bruski <oliver@bru.ski>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "chart.js": "^2.9.3",
+    "jquery": "^3.4.1"
+  }
+}
