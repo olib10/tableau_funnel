@@ -16,55 +16,57 @@
         var categoryColumnNumber = tableau.extensions.settings.get("categoryColumnNumber");
         var valueColumnNumber = tableau.extensions.settings.get("valueColumnNumber");
 
-        const worksheets = tableau.extensions.dashboardContent.dashboard.worksheets;
-        var worksheet = worksheets.find(function (sheet) {
-            return sheet.name === worksheetName;
-        });
-        worksheet.getSummaryDataAsync().then(function (sumdata) {
-            var data = [];
-            var worksheetData = sumdata.data;
+    const worksheets=tableau.extensions.dashboardContent.dashboard.worksheets;
+    var worksheet=worksheets.find(function (sheet) {
+      return sheet.name===worksheetName;
+    });
+    worksheet.getSummaryDataAsync().then(function (sumdata) {
+    console.log(sumdata);
+    //   var labels = [];
+      var data = [];
+      var worksheetData = sumdata.data;
+      
+      for (var i=0; i<worksheetData.length; i++) {
+        data.push([worksheetData[i][categoryColumnNumber-1].formattedValue, worksheetData[i][valueColumnNumber-1].value]);
+      }
+      console.log(data);
 
-            worksheetData.forEach(function (w) {
-                data.push([w[categoryColumnNumber - 1].formattedValue, w[valueColumnNumber - 1].value]);
-            });
-            console.log(data);
+    let chart = new D3Funnel("#myChart");
+       let options = {
+           chart: {
+               animate: 100
+           },
+           block: {
+               dynamicHeight: true
+           }
+       }
+       chart.draw(data, options);
+    //   var myChart = new Chart(ctx, {
+    //     type: 'doughnut',
+    //     data: {
+    //       labels: labels,
+    //       datasets: [{
+    //          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+    //          data: data
+    //       }]
+    //     }
+    //   });
+    });
+  }
 
-            //   let ctx = new D3Funnel("#myChart");
-            //   let options = {
-            //       chart: {
-            //           animate: 100
-            //       },
-            //       block: {
-            //           dynamicHeight: true
-            //       }
-            //   }
-            //   ctx.draw(data, options);
-            //   var myChart = new Chart(ctx, {
-            //     type: 'doughnut',
-            //     data: {
-            //       labels: labels,
-            //       datasets: [{
-            //          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-            //          data: data
-            //       }]
-            //     }
-            //   });
-        });
-    }
-
-    function configure() {
-        const popupUrl = `${window.location.href}/dialog.html`;
-        let defaultPayload = "";
-        tableau.extensions.ui.displayDialogAsync(popupUrl, defaultPayload, { height: 300, width: 500 }).then((closePayload) => {
-            drawChartJS();
-        }).catch((error) => {
-            switch (error.errorCode) {
-                case tableau.ErrorCodes.DialogClosedByUser:
-                    console.log("Dialog was closed by user");
-                    break;
-                default:
-                    console.error(error.message);
-            }
-        });
-    }
+  function configure() {
+    const popupUrl=`${window.location.href}/dialog.html`;
+    let defaultPayload="";
+    tableau.extensions.ui.displayDialogAsync(popupUrl, defaultPayload, { height:300, width:500 }).then((closePayload) => {
+      drawChartJS();
+    }).catch((error) => {
+      switch (error.errorCode) {
+        case tableau.ErrorCodes.DialogClosedByUser:
+          console.log("Dialog was closed by user");
+          break;
+        default:
+          console.error(error.message);
+      }
+    });
+  }
 })();
