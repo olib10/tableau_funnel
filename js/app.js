@@ -21,32 +21,33 @@
       return sheet.name===worksheetName;
     });
     worksheet.getSummaryDataAsync().then(function (sumdata) {
-      var labels = [];
-      var data = [];
-      var worksheetData = sumdata.data;
+      document.getElementById('myChart').innerHTML = '<p>' + sumdata + '</p>';
+    //   var labels = [];
+    //   var data = [];
+    //   var worksheetData = sumdata.data;
       
-      for (var i=0; i<worksheetData.length; i++) {
-        labels.push(worksheetData[i][categoryColumnNumber-1].formattedValue);
-        data.push(worksheetData[i][valueColumnNumber-1].value);
-      }
+    //   for (var i=0; i<worksheetData.length; i++) {
+    //     labels.push(worksheetData[i][categoryColumnNumber-1].formattedValue);
+    //     data.push(worksheetData[i][valueColumnNumber-1].value);
+    //   }
 
-      data = [
-          ['A', 100],
-          ['J', 100],
-          ['W', 100],
-          ['D', 100]
-      ];
+    //   data = [
+    //       ['A', 100],
+    //       ['J', 100],
+    //       ['W', 100],
+    //       ['D', 100]
+    //   ];
 
-      let ctx = new D3Funnel("#myChart");
-      let options = {
-          chart: {
-              animate: 100
-          },
-          block: {
-              dynamicHeight: true
-          }
-      }
-      ctx.draw(data, options);
+    //   let ctx = new D3Funnel("#myChart");
+    //   let options = {
+    //       chart: {
+    //           animate: 100
+    //       },
+    //       block: {
+    //           dynamicHeight: true
+    //       }
+    //   }
+    //   ctx.draw(data, options);
     //   var myChart = new Chart(ctx, {
     //     type: 'doughnut',
     //     data: {
