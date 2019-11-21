@@ -30,17 +30,26 @@
         data.push(worksheetData[i][valueColumnNumber-1].value);
       }
 
-      var ctx = $("#myChart");
-      var myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: labels,
-          datasets: [{
-             backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-             data: data
-          }]
-        }
-      });
+      let ctx = new D3Funnel("#myChart");
+      let options = {
+          chart: {
+              animate: 100
+          },
+          block: {
+              dynamicHeight: true
+          }
+      }
+      ctx.draw(data, options);
+    //   var myChart = new Chart(ctx, {
+    //     type: 'doughnut',
+    //     data: {
+    //       labels: labels,
+    //       datasets: [{
+    //          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+    //          data: data
+    //       }]
+    //     }
+    //   });
     });
   }
 
