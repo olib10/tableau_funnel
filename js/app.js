@@ -30,6 +30,13 @@
         data.push(worksheetData[i][valueColumnNumber-1].value);
       }
 
+      data = [
+          ['A', 100],
+          ['J', 100],
+          ['W', 100],
+          ['D', 100]
+      ];
+
       let ctx = new D3Funnel("#myChart");
       let options = {
           chart: {
