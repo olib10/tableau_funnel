@@ -27,20 +27,20 @@
       var worksheetData = sumdata.data;
       
       for (var i=0; i<worksheetData.length; i++) {
-        data.push(worksheetData[i][categoryColumnNumber-1].formattedValue, worksheetData[i][valueColumnNumber-1].value);
+        data.push([worksheetData[i][categoryColumnNumber-1].formattedValue, worksheetData[i][valueColumnNumber-1].value]);
       }
       console.log(data);
 
-    //   let ctx = new D3Funnel("#myChart");
-    //   let options = {
-    //       chart: {
-    //           animate: 100
-    //       },
-    //       block: {
-    //           dynamicHeight: true
-    //       }
-    //   }
-    //   ctx.draw(data, options);
+    let chart = new D3Funnel("#myChart");
+       let options = {
+           chart: {
+               animate: 100
+           },
+           block: {
+               dynamicHeight: true
+           }
+       }
+       chart.draw(data, options);
     //   var myChart = new Chart(ctx, {
     //     type: 'doughnut',
     //     data: {
