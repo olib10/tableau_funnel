@@ -23,20 +23,13 @@
     worksheet.getSummaryDataAsync().then(function (sumdata) {
     console.log(sumdata);
     //   var labels = [];
-    //   var data = [];
-    //   var worksheetData = sumdata.data;
+      var data = [];
+      var worksheetData = sumdata.data;
       
-    //   for (var i=0; i<worksheetData.length; i++) {
-    //     labels.push(worksheetData[i][categoryColumnNumber-1].formattedValue);
-    //     data.push(worksheetData[i][valueColumnNumber-1].value);
-    //   }
-
-    //   data = [
-    //       ['A', 100],
-    //       ['J', 100],
-    //       ['W', 100],
-    //       ['D', 100]
-    //   ];
+      for (var i=0; i<worksheetData.length; i++) {
+        data.push(worksheetData[i][categoryColumnNumber-1].formattedValue, worksheetData[i][valueColumnNumber-1].value);
+      }
+      console.log(data);
 
     //   let ctx = new D3Funnel("#myChart");
     //   let options = {
