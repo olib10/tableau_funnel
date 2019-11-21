@@ -1,5 +1,5 @@
 'use strict';
- 
+
 (function () {
   $(document).ready(function () {
     tableau.extensions.initializeAsync({ 'configure':configure }).then(function () {
@@ -9,13 +9,13 @@
       });
     }, function () { console.log('Error while Initializing: ' + err.toString()); });
   });
- 
+
   function drawChartJS() {
- 
+
     var worksheetName = tableau.extensions.settings.get("worksheet");
     var categoryColumnNumber = tableau.extensions.settings.get("categoryColumnNumber");
     var valueColumnNumber = tableau.extensions.settings.get("valueColumnNumber");
- 
+
     const worksheets=tableau.extensions.dashboardContent.dashboard.worksheets;
     var worksheet=worksheets.find(function (sheet) {
       return sheet.name===worksheetName;
@@ -24,12 +24,12 @@
       var labels = [];
       var data = [];
       var worksheetData = sumdata.data;
-       
+      
       for (var i=0; i<worksheetData.length; i++) {
         labels.push(worksheetData[i][categoryColumnNumber-1].formattedValue);
         data.push(worksheetData[i][valueColumnNumber-1].value);
       }
- 
+
       var ctx = $("#myChart");
       var myChart = new Chart(ctx, {
         type: 'doughnut',
@@ -43,7 +43,7 @@
       });
     });
   }
- 
+
   function configure() {
     const popupUrl=`${window.location.origin}/dialog.html`;
     let defaultPayload="";

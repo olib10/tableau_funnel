@@ -12,6 +12,12 @@
        <icon>
        iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAACdJREFUKJFjYKAS+EA04z8hxn9qMfg/UIEBJAcVg4hw/g8F+BhUAgCAtrS1v85ACwAAAABJRU5ErkJggg==
        </icon>
+       <permissions>
+        <permission>full data</permission>
+      </permissions>
+      <context-menu>
+      <configure-context-menu-item/>
+     </context-menu>
      </dashboard-extension>
      <resources>
        <resource id="name">
@@ -20,8 +26,5 @@
          <text locale="de_DE">name in German</text>
        </resource>
      </resources>
-     <context-menu>
-      <configure-context-menu-item/>
-     </context-menu>
    </manifest>
 
