@@ -21,7 +21,7 @@
             return sheet.name === worksheetName;
         });
         worksheet.getSummaryDataAsync().then(function (sumdata) {
-            console.log(worksheetData);
+            console.log(worksheet);
             var data = [];
             var worksheetData = sumdata.data;
 
