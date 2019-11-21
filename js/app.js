@@ -7,7 +7,7 @@
             let unregisterSettingsEventListener = tableau.extensions.settings.addEventListener(tableau.TableauEventType.SettingsChanged, (settingsEvent) => {
                 drawChartJS();
             });
-        }, function () { console.log('Error while Initializing: ' + err.toString()); });
+        }, function (err) { console.log('Error while Initializing: ' + err.toString()); });
     });
 
     function drawChartJS() {
@@ -21,8 +21,7 @@
             return sheet.name === worksheetName;
         });
         worksheet.getSummaryDataAsync().then(function (sumdata) {
-            console.log(sumdata);
-            //   var labels = [];
+            console.log(worksheetData);
             var data = [];
             var worksheetData = sumdata.data;
 
@@ -30,28 +29,18 @@
                 data.push([w[categoryColumnNumber - 1].formattedValue, w[valueColumnNumber - 1].value]);
             })
 
-            console.log(data);
-
             let chart = new D3Funnel("#myChart");
             let options = {
                 chart: {
-                    animate: 100
-                },
-                block: {
-                    dynamicHeight: true
+                    bottomWidth: 0.5,
+                }, block: {
+                    dynamicHeight: true,
+                    highlight: true
+                }, tooltip: {
+                    enabled: true
                 }
             }
             chart.draw(data, options);
-            //   var myChart = new Chart(ctx, {
-            //     type: 'doughnut',
-            //     data: {
-            //       labels: labels,
-            //       datasets: [{
-            //          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-            //          data: data
-            //       }]
-            //     }
-            //   });
         });
     }
 
