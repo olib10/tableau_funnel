@@ -21,7 +21,7 @@
       return sheet.name===worksheetName;
     });
     worksheet.getSummaryDataAsync().then(function (sumdata) {
-      document.getElementById('myChart').innerHTML = '<p>' + sumdata + '</p>';
+    console.log(sumdata);
     //   var labels = [];
     //   var data = [];
     //   var worksheetData = sumdata.data;

@@ -3,11 +3,11 @@
      <dashboard-extension id="de.frachtwerk" extension-version="0.1.0">
        <default-locale>en_US</default-locale>
        <name resource-id="name"/>
-       <description>Extension Description</description>
-       <author name="USERNAME" email="USER@example.com" organization="MyCo" website="https://www.example.com"/>
+       <description>Funnel Chart with dynamic block height</description>
+       <author name="Oliver Bruski" email="oliver.bruski@frachtwerk.de" organization="Frachtwerk" website="https://www.frachtwerk.de"/>
        <min-api-version>1.0</min-api-version>
        <source-location>
-         <url>http://localhost:8080</url>
+         <url>https://olib10.github.io/tableau_funnel/</url>
        </source-location>
        <icon>
        iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAACdJREFUKJFjYKAS+EA04z8hxn9qMfg/UIEBJAcVg4hw/g8F+BhUAgCAtrS1v85ACwAAAABJRU5ErkJggg==
@@ -21,9 +21,8 @@
      </dashboard-extension>
      <resources>
        <resource id="name">
-         <text locale="en_US">name in English</text>
-         <text locale="fr_BE">name in French</text>
-         <text locale="de_DE">name in German</text>
+         <text locale="en_US">Funnel Chart</text>
+         <text locale="de_DE">Trichter Diagramm</text>
        </resource>
      </resources>
    </manifest>
