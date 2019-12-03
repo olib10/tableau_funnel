@@ -32,12 +32,12 @@
             let chart = new D3Funnel("#myChart");
             let options = {
                 chart: {
+                    width: '100%',
+                    height: '100%',
                     bottomWidth: 0.5,
                 }, block: {
                     dynamicHeight: true,
                     highlight: true
-                }, tooltip: {
-                    enabled: true
                 }
             }
             chart.draw(data, options);
